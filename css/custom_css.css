@@ -1,0 +1,124 @@
+.box{
+  width: 120px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 4px;
+  margin:0 auto;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.box:hover,
+.box:focus {
+  color: #333333;
+  line-height: 4;
+  width: 200px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.box-hover {
+  color: #333333;
+  background-color: #00CC99;
+  border-color: #cccccc;
+  margin:0 auto;
+}
+.box-hover:hover,
+.box-hover:focus,
+.box-hover:active,
+.box-hover.active,
+.open .dropdown-toggle.box-default {
+  color: #333333;
+  /*background-color: #ebebeb;*/
+  background-color: #336699;
+  border-color: #adadad;
+  box-shadow: 0 0 20px #888;
+  margin:0 auto;
+}
+
+.col-lg-12 {
+	text-align: center;
+	background-color: #eee;
+}
+
+.col-lg-5 {
+	text-align: center;
+	background-color: #eee;
+	margin:0 auto;
+}
+
+.divider {
+	margin: 40px;
+}
+
+.box1{
+  width: 120px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 4px;
+  margin:0 auto;
+  color: #333333;
+  background-color: #5cb85c;
+  border-color: #cccccc;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.box2{
+  width: 120px;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 3;
+  border-radius: 4px;
+  margin:0 auto;
+  color: #333333;
+  background-color: #336699;
+  border-color: #cccccc;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*LESS*/
+
+.btn-new-default{
+	.btn-default;
+	background-color: #336699;
+}
+

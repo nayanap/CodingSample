@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BlackRock Coding Exercise</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom_css.css" rel = "stylesheet">
+
+  </head>
+  <body>
+    <div class  = "navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-brand">Coding samples</div> 
+      </div>
+
+    </div>
+
+    <div class = "container">
+      <div class="col-lg-12">
+        <h4>Hover over to see the change in size color and a shadow</h4>
+        <p><a class="box box-hover" role="box">Hover here !!</a></p>
+      </div>
+    </div>
+   
+    <div class = "divider"></div>
+
+    <div id = "container" class = "container">
+      <div class = "col-lg-5 pull-left">
+          <h4>HTML object Box1 "Click to swap"</h4>
+          <p><div class="box1" onclick="swapboxes()">Box1</div></p>
+      </div>
+
+      <div class =" col-lg-5 pull-right">
+          <h4>HTML object Box2 "Click to swap"</h4>
+          <p><div class="box2" onclick="swapboxes()">Box2</div></p>
+      </div>
+    </div> 
+    </div>
+
+    <div class = "divider"></div>
+
+    <div class = "container">
+      <div class = "col-lg-12">
+      <h4>Please refresh the page if the graph is not loaded. The D3.js might not be loaded immediately sometimes. Thank you.</h4>
+      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script type="text/javascript"> 
+    // Create Global Variable
+    var dataset;
+
+    dataset =  [{name: "Honda CR-Z",mpg: 37},
+                {name: "Scion iQ",mpg: 37},
+                {name: "Toyota Prius",mpg: 50},
+                {name: "Ford C-MAX Hybrid",mpg: 43},
+                {name: "BMW 328d xDrive Sports Wagon",mpg: 35}];
+
+      // Call function
+      Graph(dataset);
+      
+
+    // Create function
+    function Graph(input) {
+    
+    // Declare Variables
+    var margin = {top: 60, right: 60, bottom: 60, left:120},
+    w = 600 - margin.left - margin.right,
+    h = 400 - margin.top - margin.bottom;
+    
+    //Create X Scale for bar graph
+    var xScale = d3.scale.ordinal()
+               .domain(input.map(function (d){ return d.name;}))
+               .rangeRoundBands([0, w], 0.05);
+    
+    //Create Y Scale for bar graph
+    var yScale = d3.scale.linear()
+             .domain([0,d3.max(input, function(d) { return d.mpg; })])
+             .range([h, 0]);
+  
+    //Create X Axis 
+    var xAxis = d3.svg.axis()
+            .scale(xScale)
+            .orient("bottom");
+                   
+    //Create Y Axis
+    var yAxis = d3.svg.axis()
+            .scale(yScale)
+            .orient('left');
+    
+    //Create SVG element
+    var svg = d3.select("body")
+          .append("svg")
+          .attr("width", w + margin.left + margin.right)
+          .attr("height", h + margin.top + margin.bottom)
+          .append('g')
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          
+    //Create X axis 
+    svg.append("g")
+       .attr("class", "axis x")
+       .attr("transform", "translate(0," + h + ")")
+       .call(xAxis);
+            
+    //Create Title 
+    svg.append("text")
+    .attr("x", w / 2 )
+        .attr("y", 0)
+        .style("text-anchor", "middle")
+        .text("Car mpg Chart");
+       
+    //Create X axis label   
+    svg.append("text")
+    .attr("x", w / 2 )
+        .attr("y",  h + margin.bottom)
+        .style("text-anchor", "middle")
+        .text("Name of the Car");
+          
+    //Create Y axis
+    svg.append("g")
+       .attr("class", "axis y")
+       .call(yAxis);
+       
+    //Create Y axis label
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0-margin.left)
+        .attr("x",0 - (h / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("mpg");
+          
+    //Add rectangles
+    svg.selectAll(".bar")
+       .data(input)
+       .enter()
+       .append("rect")
+       .attr("class", "bar")
+           .style("fill", "steelblue")
+       .attr("x", function(d) { return xScale(d.name); })
+       .attr("y", function(d) { return yScale(d.mpg) })
+       .attr("width", xScale.rangeBand()) //returns rangeRoundBands width
+       .attr("height", function(d) { return h - yScale(d.mpg) });
+       
+
+    }; // end Graph function
+
+            
+      </script>
+
+      </div>
+    </div>
+
+    <div class = "divider"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <!--Script for swapping boxes-->
+    <script type="text/javascript"> 
+      function swapboxes() {
+          //Get the HTML Collection of elements with class name box1 and box2
+          var box1_Collection = document.getElementById('container').getElementsByClassName('box1');
+          var box2_Collection = document.getElementById('container').getElementsByClassName('box2');
+          //get the first elemenst in them
+          var box1 = box1_Collection.item(0)
+          var box2 = box2_Collection.item(0)
+          //Declare a helper to swap box1 and box2
+          var temp = document.createElement("div")
+          box1.parentNode.insertBefore(temp,box1)
+          box2.parentNode.insertBefore(box1,box2)
+          temp.parentNode.insertBefore(box2,temp)
+          //delete the helper
+          temp.parentNode.removeChild(temp)
+      }
+    </script>
+
+  </body>
+
+</html>
