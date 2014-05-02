@@ -146,7 +146,8 @@
                .attr("width", xScale.rangeBand()) 
                .attr("height", function(d) { return h - yScale(d.mpg)})
                .style("fill", function(d) { return d.color})
-               .on("mouseover", function() { d3.select(this).style("fill", "orange");});
+               .on("mouseover", function() { d3.select(this).style("fill", "orange");})
+               .on("mouseout", function(d) { d3.select(this).style("fill", function(d) { return d.color});});
                                      
 
             }; 
